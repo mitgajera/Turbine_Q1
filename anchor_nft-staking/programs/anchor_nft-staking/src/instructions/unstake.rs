@@ -25,8 +25,8 @@ pub struct Unstake<'info> {
 
     #[account(
         mut,
-        constraint = asset.owner == &CORE_PROGRAM_ID,
-        constraint = !asset.data_is_empty(),
+        constraint = collection.owner == &CORE_PROGRAM_ID,
+        constraint = !collection.data_is_empty(),
     )]
     /// CHECK: collection is verified by the core program
     pub collection: UncheckedAccount<'info>,
