@@ -7,7 +7,7 @@ mod error;
 use instructions::*;
 // use state::*;
 
-declare_id!("3feeK7HhTHmmr9ofcsNSb5QjQ6c8Vyhsko6E377Eo2yC");
+declare_id!("62RT8AN4zK2GAFqgnyHttBiNNT3Kjd5XfDKm98W7vo3S");
 
 #[program]
 pub mod anchor_mplxcore {
@@ -33,7 +33,7 @@ pub mod anchor_mplxcore {
         ctx.accounts.thaw_nft()
     }
 
-    pub fn thaw_nft(ctx: Context<UpdateNft>, new_name: String) -> Result<()> {
-        ctx.accounts.update_nft(new_name)
+    pub fn update_nft(ctx: Context<UpdateNft>, new_name: String, new_uri: String) -> Result<()> {
+        ctx.accounts.update_nft(new_name, new_uri)
     }
 }

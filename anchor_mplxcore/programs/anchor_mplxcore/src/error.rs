@@ -7,6 +7,8 @@ pub enum MPLXCoreError {
     #[msg("The creator is already in the list.")]
     CreatorAlreadyWhitelisted,
     #[msg("The payer is not the program's upgrade authority.")]
+    UnauthorizedCreator,
+    #[msg("The authority is not authorized to perform this action.")]
     NotAuthorized,
     #[msg("The collection has already been initialized.")]
     CollectionAlreadyInitialized,
@@ -14,6 +16,6 @@ pub enum MPLXCoreError {
     AssetAlreadyInitialized,
     #[msg("The collection is not initialized.")]
     CollectionNotInitialized,
-    #[msg("The collection is invalid.")]
+    #[msg("The collection is invalid.")]    
     InvalidCollection,
 }

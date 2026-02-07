@@ -1,6 +1,6 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
-import { AnchorMplxcoreQ425 } from "../target/types/anchor_mplxcore";
+import { AnchorMplxcore } from "../target/types/anchor_mplxcore";
 import { PublicKey, Keypair, SystemProgram } from "@solana/web3.js";
 import { assert } from "chai";
 import { MPL_CORE_PROGRAM_ID } from "@metaplex-foundation/mpl-core";
@@ -9,7 +9,7 @@ describe("anchor_mplxcore", () => {
   // Configure the client to use the local cluster.
   const provider = anchor.AnchorProvider.env();
   anchor.setProvider(provider);
-  const program = anchor.workspace.AnchorMplxcoreQ425 as Program<AnchorMplxcoreQ425>;
+  const program = anchor.workspace.anchorMplxcore as Program<AnchorMplxcore>;
   const connection = provider.connection;
 
   // Accounts

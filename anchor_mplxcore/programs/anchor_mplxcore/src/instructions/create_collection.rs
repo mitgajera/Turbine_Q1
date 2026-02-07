@@ -18,7 +18,7 @@ pub struct CreateCollectionArgs {
 pub struct CreateCollection<'info> {
     #[account(
         mut,
-        constraint = whitelisted_creators.contains(&creator.to_account_info()) @ MPLXCoreError::NotAuthorized,
+        constraint = whitelisted_creators.contains(&creator.to_account_info()) @ MPLXCoreError::UnauthorizedCreator,
     )]
     pub creator: Signer<'info>,
     #[account(mut, constraint = collection.data_is_empty() @ MPLXCoreError::CollectionAlreadyInitialized)]
