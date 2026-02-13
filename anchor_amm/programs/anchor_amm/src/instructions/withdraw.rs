@@ -17,6 +17,8 @@ pub struct Withdraw<'info> {
 
     #[account(
         mut,
+        has_one = mint_x,
+        has_one = mint_y,
         seeds = [b"config", config.seed.to_le_bytes().as_ref()],
         bump = config.config_bump,
     )]
@@ -80,6 +82,7 @@ impl<'info> Withdraw<'info> {
     ) -> Result<()> {
         require!(amount != 0, AmmError::ZeroBalance);
         require!(amount <= self.user_lp.amount, AmmError::InsufficientBalance);
+        require!(min_x != 0 || min_y != 0, AmmError::InvalidAmount);
 
         let vault_x_amount = self.vault_x.amount;
         let vault_y_amount = self.vault_y.amount;

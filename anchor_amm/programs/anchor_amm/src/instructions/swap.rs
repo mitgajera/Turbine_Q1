@@ -17,6 +17,8 @@ pub struct Swap<'info> {
 
     #[account(
         mut,
+        has_one = mint_x,
+        has_one = mint_y,
         seeds = [b"config", config.seed.to_le_bytes().as_ref()],
         bump = config.config_bump,
     )]
@@ -37,7 +39,8 @@ pub struct Swap<'info> {
     pub vault_y: Account<'info, TokenAccount>,
 
     #[account(
-        mut,
+        init_if_needed,
+        payer = swapper,
         associated_token::mint = mint_x,
         associated_token::authority = swapper,
     )]
@@ -86,6 +89,7 @@ impl<'info> Swap<'info> {
             .checked_sub(new_y)
             .ok_or(AmmError::Underflow)?;
 
+        require!(swap_out != 0, AmmError::InvalidAmount);
         require!(swap_out >= min, AmmError::SlippageExceeded);
         require!(swap_out <= from_vault_amount, AmmError::InsufficientBalance);
 
