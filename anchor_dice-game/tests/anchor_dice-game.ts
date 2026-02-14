@@ -12,7 +12,7 @@ import {
 import { assert } from "chai";
 import BN from "bn.js";
 
-describe("anchor-dice-game-q4-25", () => {
+describe("anchor_dice-gane", () => {
   const provider = anchor.AnchorProvider.env();
   anchor.setProvider(provider);
 
